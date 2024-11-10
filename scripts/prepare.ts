@@ -170,6 +170,13 @@ import { id } from "tsafe/id";
         Buffer.from(JSON.stringify(distPackageJson, null, 2), "utf8")
     );
 
+    for (const basename of ["README.md", "LICENSE"]) {
+        fs.copyFileSync(
+            pathJoin(getThisCodebaseRootDirPath(), basename),
+            pathJoin(distDirPath, basename)
+        );
+    }
+
     console.log(
         chalk.green(
             `\n\nPulled @keycloak/keycloak-shared-ui@${keycloakUiSharedVersion} from keycloak version ${keycloakVersion}`
