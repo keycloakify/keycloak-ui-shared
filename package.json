@@ -1,0 +1,44 @@
+{
+    "name": "@keycloakify/keycloak-shared-ui",
+    "version": "26.0.5001",
+    "description": "Repackaged @keycloak/keycloak-ui-shared",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/keycloakify/keycloak-shared-ui.git"
+    },
+    "scripts": {
+        "prepare": "tsx scripts/prepare.ts",
+        "_format": "prettier '**/*.{ts,tsx,json,md}'",
+        "format": "npm run _format -- --write",
+        "format:check": "npm run _format -- --list-different"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,json,md}": [
+            "prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged -v"
+        }
+    },
+    "author": "The Keycloak Team, re-packaged by u/garronej",
+    "license": "Apache-2.0",
+    "keywords": [],
+    "homepage": "https://github.com/keycloakify/keycloak-shared-ui",
+    "devDependencies": {
+        "@types/make-fetch-happen": "^10.0.1",
+        "@types/node": "^20.14.10",
+        "@types/yauzl": "^2.10.3",
+        "husky": "^4.3.8",
+        "lint-staged": "^11.1.1",
+        "make-fetch-happen": "^11.0.3",
+        "prettier": "^3.3.2",
+        "tsafe": "^1.7.2",
+        "tsx": "^4.16.2",
+        "typescript": "^5.5.3",
+        "yauzl": "^2.10.0",
+        "chalk": "^4.1.2",
+        "evt": "^2.5.7"
+    }
+}
