@@ -179,7 +179,7 @@ import { id } from "tsafe/id";
 
     console.log(
         chalk.green(
-            `\n\nPulled @keycloak/keycloak-shared-ui@${keycloakUiSharedVersion} from keycloak version ${keycloakVersion}`
+            `\n\nPulled @keycloak/keycloak-ui-shared@${keycloakUiSharedVersion} from keycloak version ${keycloakVersion}`
         )
     );
 })();

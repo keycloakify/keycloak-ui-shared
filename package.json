@@ -1,10 +1,10 @@
 {
-    "name": "@keycloakify/keycloak-shared-ui",
+    "name": "@keycloakify/keycloak-ui-shared",
     "version": "26.0.5001",
     "description": "Repackaged @keycloak/keycloak-ui-shared",
     "repository": {
         "type": "git",
-        "url": "git://github.com/keycloakify/keycloak-shared-ui.git"
+        "url": "git://github.com/keycloakify/keycloak-ui-shared.git"
     },
     "scripts": {
         "prepare": "tsx scripts/prepare.ts",
@@ -25,7 +25,7 @@
     "author": "The Keycloak Team, re-packaged by u/garronej",
     "license": "Apache-2.0",
     "keywords": [],
-    "homepage": "https://github.com/keycloakify/keycloak-shared-ui",
+    "homepage": "https://github.com/keycloakify/keycloak-ui-shared",
     "devDependencies": {
         "@types/make-fetch-happen": "^10.0.1",
         "@types/node": "^20.14.10",
