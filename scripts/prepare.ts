@@ -107,7 +107,10 @@ import { id } from "tsafe/id";
 
             await writeFile({
                 fileRelativePath,
-                modifiedData: Buffer.from(["// @ts-nocheck", "", sourceCode].join("\n"), "utf8")
+                modifiedData: Buffer.from(
+                    ["/* eslint-disable */", "", "// @ts-nocheck", "", sourceCode].join("\n"),
+                    "utf8"
+                )
             });
 
             if (fileRelativePath === "main.ts") {
