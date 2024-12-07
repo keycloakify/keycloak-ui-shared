@@ -106,8 +106,8 @@ import { id } from "tsafe/id";
             let sourceCode = (await readFile()).toString("utf8");
 
             await writeFile({
-                fileRelativePath: pathJoin(fileRelativePath),
-                modifiedData: Buffer.from(sourceCode, "utf8")
+                fileRelativePath,
+                modifiedData: Buffer.from(["// @ts-nocheck", "", sourceCode].join("\n"), "utf8")
             });
 
             if (fileRelativePath === "main.ts") {
