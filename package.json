@@ -1,6 +1,6 @@
 {
     "name": "@keycloakify/keycloak-ui-shared",
-    "version": "26.0.6002",
+    "version": "26.0.6003",
     "description": "Repackaged @keycloak/keycloak-ui-shared",
     "repository": {
         "type": "git",
