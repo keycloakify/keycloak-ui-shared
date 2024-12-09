@@ -103,7 +103,7 @@ import { id } from "tsafe/id";
                 return;
             }
 
-            let sourceCode = (await readFile()).toString("utf8");
+            const sourceCode = (await readFile()).toString("utf8");
 
             await writeFile({
                 fileRelativePath,
@@ -128,6 +128,7 @@ import { id } from "tsafe/id";
     });
 
     let keycloakUiSharedVersion: string | undefined;
+    let isKeycloakSelectPatched = false;
 
     transformCodebase({
         srcDirPath: extractedDirPath,
@@ -139,11 +140,27 @@ import { id } from "tsafe/id";
                 return;
             }
 
+            if (fileRelativePath === "select/KeycloakSelect.tsx") {
+                const contentBefore = sourceCode.toString("utf8");
+
+                const contentAfter = contentBefore.replace(
+                    "KeycloakSelectProps<>",
+                    "KeycloakSelectProps"
+                );
+
+                assert(contentBefore !== contentAfter);
+
+                isKeycloakSelectPatched = true;
+
+                return { modifiedSourceCode: Buffer.from(contentAfter, "utf8") };
+            }
+
             return { modifiedSourceCode: sourceCode };
         }
     });
 
     assert(typeof keycloakUiSharedVersion === "string");
+    assert(isKeycloakSelectPatched);
 
     distPackageJson.peerDependencies = await (async () => {
         const { dependencies, peerDependencies, devDependencies } = await fetch(
