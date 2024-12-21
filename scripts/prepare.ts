@@ -23,7 +23,12 @@ import { id } from "tsafe/id";
         );
 
         const { name, repository, author, license, homepage, version } = parsedPackageJson;
-        const keycloakVersion: string = version.slice(0, -3);
+
+        const keycloakVersion = (() => {
+            const major = version.split(".")[0];
+
+            return `${parseInt(major[0] + major[1])}.${parseInt(major[2] + major[3])}.${parseInt(major[4] + major[5])}`;
+        })();
 
         return {
             keycloakVersion,
