@@ -9,6 +9,7 @@ import fetch from "make-fetch-happen";
 import * as fs from "fs";
 import chalk from "chalk";
 import { id } from "tsafe/id";
+import { isAmong } from "tsafe/isAmong";
 
 (async () => {
     const distDirPath = pathJoin(getThisCodebaseRootDirPath(), "dist");
@@ -168,23 +169,30 @@ import { id } from "tsafe/id";
     assert(isKeycloakSelectPatched);
 
     distPackageJson.peerDependencies = await (async () => {
-        const { dependencies, peerDependencies, devDependencies } = await fetch(
+        const { dependencies, peerDependencies, devDependencies } = (await fetch(
             `https://unpkg.com/@keycloak/keycloak-ui-shared@${keycloakUiSharedVersion}/package.json`,
             fetchOptions
-        ).then(response => response.json());
+        ).then(response => response.json())) as {
+            dependencies?: Record<string, string>;
+            peerDependencies?: Record<string, string>;
+            devDependencies?: Record<string, string>;
+        };
 
-        const typeNames = [
-            ...Object.keys(dependencies ?? {}),
-            ...Object.keys(peerDependencies ?? {})
-        ].map(name =>
+        const dependenciesAndPeerDependencies = Object.fromEntries(
+            Object.entries({
+                ...dependencies,
+                ...peerDependencies
+            }).filter(([moduleName]) => !isAmong(["react-dom"], moduleName))
+        );
+
+        const typeNames = Object.keys(dependenciesAndPeerDependencies).map(name =>
             name.startsWith("@") ? `@types/${name.substring(1).replace("/", "__")}` : `@types/${name}`
         );
 
         return {
-            ...dependencies,
-            ...peerDependencies,
+            ...dependenciesAndPeerDependencies,
             ...Object.fromEntries(
-                Object.entries(devDependencies).filter(([name]) => {
+                Object.entries(devDependencies ?? {}).filter(([name]) => {
                     if (!name.startsWith("@types")) {
                         return false;
                     }
