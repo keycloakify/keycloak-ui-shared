@@ -1,1 +1,2 @@
-export * from "@patternfly/react-core";
+// eslint-disable-next-line react-refresh/only-export-components
+export * from "@patternfly/react-table";
