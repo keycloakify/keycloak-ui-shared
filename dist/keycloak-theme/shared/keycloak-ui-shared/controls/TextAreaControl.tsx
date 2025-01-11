@@ -6,7 +6,7 @@ import {
   TextArea,
   TextAreaProps,
   ValidatedOptions,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import {
   FieldPath,
   FieldValues,

@@ -14,8 +14,8 @@ import {
   TextInputGroup,
   TextInputGroupMain,
   TextInputGroupUtilities,
-} from "@patternfly/react-core";
-import { TimesIcon } from "@patternfly/react-icons";
+} from "../../../@patternfly/react-core";
+import { TimesIcon } from "../../../@patternfly/react-icons";
 import { get } from "lodash-es";
 import { useMemo, useRef, useState } from "react";
 import {

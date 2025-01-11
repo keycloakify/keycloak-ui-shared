@@ -9,7 +9,7 @@ import {
   TextInput,
   TextInputProps,
   ValidatedOptions,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import { ReactNode } from "react";
 import {
   FieldPath,

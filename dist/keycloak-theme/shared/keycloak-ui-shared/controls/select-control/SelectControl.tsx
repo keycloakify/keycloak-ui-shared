@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { ChipGroupProps, SelectProps } from "@patternfly/react-core";
+import { ChipGroupProps, SelectProps } from "../../../@patternfly/react-core";
 import {
   ControllerProps,
   FieldPath,

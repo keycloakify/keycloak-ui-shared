@@ -10,7 +10,7 @@ import {
   Text,
   TextContent,
   TextVariants,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import { useTranslation } from "react-i18next";
 
 type ErrorPageProps = {

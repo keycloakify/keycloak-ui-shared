@@ -2,8 +2,8 @@
 
 // @ts-nocheck
 
-import { Icon, Popover } from "@patternfly/react-core";
-import { HelpIcon } from "@patternfly/react-icons";
+import { Icon, Popover } from "../../@patternfly/react-core";
+import { HelpIcon } from "../../@patternfly/react-icons";
 import { ReactNode } from "react";
 import { useHelp } from "../context/HelpContext";
 

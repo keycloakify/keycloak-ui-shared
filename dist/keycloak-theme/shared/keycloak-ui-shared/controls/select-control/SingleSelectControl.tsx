@@ -8,7 +8,7 @@ import {
   Select,
   SelectList,
   SelectOption,
-} from "@patternfly/react-core";
+} from "../../../@patternfly/react-core";
 import { get } from "lodash-es";
 import { useState } from "react";
 import {

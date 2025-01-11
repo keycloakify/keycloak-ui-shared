@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { Title, TitleProps } from "@patternfly/react-core";
+import { Title, TitleProps } from "../../@patternfly/react-core";
 
 import style from "./form-title.module.css";
 

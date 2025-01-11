@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { AlertVariant } from "@patternfly/react-core";
+import { AlertVariant } from "../../@patternfly/react-core";
 import { PropsWithChildren, useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 

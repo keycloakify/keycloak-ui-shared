@@ -7,8 +7,8 @@ import {
   FormHelperTextProps,
   HelperText,
   HelperTextItem,
-} from "@patternfly/react-core";
-import { ExclamationCircleIcon } from "@patternfly/react-icons";
+} from "../../@patternfly/react-core";
+import { ExclamationCircleIcon } from "../../@patternfly/react-icons";
 
 export type FormErrorTextProps = FormHelperTextProps & {
   message: string;

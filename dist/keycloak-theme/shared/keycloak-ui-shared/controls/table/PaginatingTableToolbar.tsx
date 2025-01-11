@@ -6,7 +6,7 @@ import {
   Pagination,
   PaginationToggleTemplateProps,
   ToolbarItem,
-} from "@patternfly/react-core";
+} from "../../../@patternfly/react-core";
 import { PropsWithChildren, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 

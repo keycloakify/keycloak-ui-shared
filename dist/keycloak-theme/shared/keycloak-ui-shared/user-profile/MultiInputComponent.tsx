@@ -10,8 +10,8 @@ import {
   TextInputProps,
   TextInputTypes,
   InputGroupItem,
-} from "@patternfly/react-core";
-import { MinusCircleIcon, PlusCircleIcon } from "@patternfly/react-icons";
+} from "../../@patternfly/react-core";
+import { MinusCircleIcon, PlusCircleIcon } from "../../@patternfly/react-icons";
 import { type TFunction } from "i18next";
 import { Fragment, useEffect, useMemo } from "react";
 import { FieldPath, UseFormReturn, useWatch } from "react-hook-form";

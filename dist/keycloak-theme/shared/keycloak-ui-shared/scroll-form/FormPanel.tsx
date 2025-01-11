@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { Card, CardBody, CardHeader, CardTitle } from "@patternfly/react-core";
+import { Card, CardBody, CardHeader, CardTitle } from "../../@patternfly/react-core";
 import { PropsWithChildren, useId } from "react";
 import { FormTitle } from "./FormTitle";
 

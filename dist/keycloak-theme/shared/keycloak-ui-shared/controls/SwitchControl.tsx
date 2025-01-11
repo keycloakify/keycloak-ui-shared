@@ -10,7 +10,7 @@ import {
   PathValue,
   useFormContext,
 } from "react-hook-form";
-import { SwitchProps, Switch } from "@patternfly/react-core";
+import { SwitchProps, Switch } from "../../@patternfly/react-core";
 import { FormLabel } from "./FormLabel";
 
 export type SwitchControlProps<

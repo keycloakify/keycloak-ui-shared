@@ -7,7 +7,7 @@ import {
   UserProfileAttributeMetadata,
   UserProfileMetadata,
 } from "@keycloak/keycloak-admin-client/lib/defs/userProfileMetadata";
-import { Text } from "@patternfly/react-core";
+import { Text } from "../../@patternfly/react-core";
 import { TFunction } from "i18next";
 import { ReactNode, useMemo, type JSX } from "react";
 import { FieldPath, UseFormReturn } from "react-hook-form";

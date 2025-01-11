@@ -7,7 +7,7 @@ import {
   HelperText,
   HelperTextItem,
   ValidatedOptions,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import {
   FieldPath,
   FieldValues,

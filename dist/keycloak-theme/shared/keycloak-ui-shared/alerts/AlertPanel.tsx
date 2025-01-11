@@ -7,7 +7,7 @@ import {
   Alert,
   AlertActionCloseButton,
   AlertVariant,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 
 import type { AlertEntry } from "./Alerts";
 

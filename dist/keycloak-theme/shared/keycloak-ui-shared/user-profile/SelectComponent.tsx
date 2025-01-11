@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { SelectOption } from "@patternfly/react-core";
+import { SelectOption } from "../../@patternfly/react-core";
 import { useState } from "react";
 import { Controller, ControllerRenderProps } from "react-hook-form";
 import { KeycloakSelect, SelectVariant } from "../select/KeycloakSelect";

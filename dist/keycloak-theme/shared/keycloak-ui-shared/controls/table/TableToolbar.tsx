@@ -9,7 +9,7 @@ import {
   Toolbar,
   ToolbarContent,
   ToolbarItem,
-} from "@patternfly/react-core";
+} from "../../../@patternfly/react-core";
 import { KeyboardEvent, PropsWithChildren, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 

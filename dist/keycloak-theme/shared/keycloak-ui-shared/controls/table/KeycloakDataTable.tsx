@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { Button, ButtonVariant, ToolbarItem } from "@patternfly/react-core";
+import { Button, ButtonVariant, ToolbarItem } from "../../../@patternfly/react-core";
 import type { SVGIconProps } from "@patternfly/react-icons/dist/js/createIcon";
 import {
   ActionsColumn,
@@ -22,7 +22,7 @@ import {
   Th,
   Thead,
   Tr,
-} from "@patternfly/react-table";
+} from "../../../@patternfly/react-table";
 import { cloneDeep, differenceBy, get } from "lodash-es";
 import {
   ComponentClass,
@@ -41,7 +41,7 @@ import { useStoredState } from "../../utils/useStoredState";
 import { useFetch } from "../../utils/useFetch";
 import { ListEmptyState } from "./ListEmptyState";
 import { PaginatingTableToolbar } from "./PaginatingTableToolbar";
-import { SyncAltIcon } from "@patternfly/react-icons";
+import { SyncAltIcon } from "../../../@patternfly/react-icons";
 import { KeycloakSpinner } from "../KeycloakSpinner";
 
 type TitleCell = { title: JSX.Element };

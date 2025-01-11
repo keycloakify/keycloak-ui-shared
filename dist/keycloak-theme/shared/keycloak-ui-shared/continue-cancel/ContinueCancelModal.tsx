@@ -3,7 +3,7 @@
 // @ts-nocheck
 
 import { ReactNode, useState } from "react";
-import { Button, ButtonProps, Modal, ModalProps } from "@patternfly/react-core";
+import { Button, ButtonProps, Modal, ModalProps } from "../../@patternfly/react-core";
 
 export type ContinueCancelModalProps = Omit<ModalProps, "ref" | "children"> & {
   modalTitle: string;

@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { Icon } from "@patternfly/react-core";
+import { Icon } from "../../@patternfly/react-core";
 import {
   BitbucketIcon,
   CubeIcon,
@@ -17,7 +17,7 @@ import {
   PaypalIcon,
   StackOverflowIcon,
   TwitterIcon,
-} from "@patternfly/react-icons";
+} from "../../@patternfly/react-icons";
 
 type IconMapperProps = {
   icon: string;

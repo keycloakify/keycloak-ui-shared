@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { Spinner } from "@patternfly/react-core";
+import { Spinner } from "../../@patternfly/react-core";
 import Keycloak from "keycloak-js";
 import {
   PropsWithChildren,

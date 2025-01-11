@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { TextInput, TextInputTypes } from "@patternfly/react-core";
+import { TextInput, TextInputTypes } from "../../@patternfly/react-core";
 
 import { UserProfileFieldProps } from "./UserProfileFields";
 import { UserProfileGroup } from "./UserProfileGroup";

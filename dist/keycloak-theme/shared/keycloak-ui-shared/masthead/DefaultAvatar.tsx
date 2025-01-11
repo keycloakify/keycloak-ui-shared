@@ -3,7 +3,7 @@
 // @ts-nocheck
 
 import styles from "@patternfly/react-styles/css/components/Avatar/avatar";
-import { css } from "@patternfly/react-styles";
+import { css } from "../../@patternfly/react-styles";
 
 type DefaultAvatarProps = {
   className?: string;

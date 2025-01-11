@@ -4,7 +4,7 @@
 
 // TODO: Remove code once the following issue has been fixed:
 // https://github.com/patternfly/patternfly-react/issues/10192
-import { TextArea } from "@patternfly/react-core";
+import { TextArea } from "../../../@patternfly/react-core";
 import {
   ComponentProps,
   HTMLProps,

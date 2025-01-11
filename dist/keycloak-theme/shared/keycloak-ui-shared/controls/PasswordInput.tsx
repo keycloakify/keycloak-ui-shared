@@ -8,8 +8,8 @@ import {
   InputGroupItem,
   TextInput,
   type TextInputProps,
-} from "@patternfly/react-core";
-import { EyeIcon, EyeSlashIcon } from "@patternfly/react-icons";
+} from "../../@patternfly/react-core";
+import { EyeIcon, EyeSlashIcon } from "../../@patternfly/react-icons";
 import { MutableRefObject, Ref, forwardRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 

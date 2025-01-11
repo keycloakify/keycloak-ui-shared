@@ -7,8 +7,8 @@ import {
   DropdownList,
   DropdownProps,
   MenuToggle,
-} from "@patternfly/react-core";
-import { EllipsisVIcon } from "@patternfly/react-icons";
+} from "../../@patternfly/react-core";
+import { EllipsisVIcon } from "../../@patternfly/react-icons";
 import { ReactNode, useState } from "react";
 
 type KeycloakDropdownProps = Omit<DropdownProps, "toggle"> & {

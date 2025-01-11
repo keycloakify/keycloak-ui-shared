@@ -9,7 +9,7 @@ import {
   JumpLinks,
   JumpLinksItem,
   PageSection,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import { Fragment, ReactNode, useMemo } from "react";
 import { FormPanel } from "./FormPanel";
 import { ScrollPanel } from "./ScrollPanel";

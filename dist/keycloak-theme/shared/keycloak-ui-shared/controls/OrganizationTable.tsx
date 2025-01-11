@@ -3,8 +3,8 @@
 // @ts-nocheck
 
 import OrganizationRepresentation from "@keycloak/keycloak-admin-client/lib/defs/organizationRepresentation";
-import { Badge, Chip, ChipGroup } from "@patternfly/react-core";
-import { TableText } from "@patternfly/react-table";
+import { Badge, Chip, ChipGroup } from "../../@patternfly/react-core";
+import { TableText } from "../../@patternfly/react-table";
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { KeycloakDataTable, LoaderFunction } from "./table/KeycloakDataTable";

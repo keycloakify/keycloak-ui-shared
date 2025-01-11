@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 
-import { FormGroup, FormGroupProps } from "@patternfly/react-core";
+import { FormGroup, FormGroupProps } from "../../@patternfly/react-core";
 import { PropsWithChildren, ReactNode } from "react";
 import { FieldError, FieldValues, Merge } from "react-hook-form";
 import { FormErrorText } from "./FormErrorText";

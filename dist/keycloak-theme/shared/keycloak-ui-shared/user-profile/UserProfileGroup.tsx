@@ -3,7 +3,7 @@
 // @ts-nocheck
 
 import { UserProfileAttributeMetadata } from "@keycloak/keycloak-admin-client/lib/defs/userProfileMetadata";
-import { FormGroup, InputGroup } from "@patternfly/react-core";
+import { FormGroup, InputGroup } from "../../@patternfly/react-core";
 import { TFunction } from "i18next";
 import { get } from "lodash-es";
 import { PropsWithChildren, ReactNode } from "react";

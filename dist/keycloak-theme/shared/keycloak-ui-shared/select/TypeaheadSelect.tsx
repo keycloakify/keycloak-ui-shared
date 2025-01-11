@@ -15,8 +15,8 @@ import {
   TextInputGroup,
   TextInputGroupMain,
   TextInputGroupUtilities,
-} from "@patternfly/react-core";
-import { TimesIcon } from "@patternfly/react-icons";
+} from "../../@patternfly/react-core";
+import { TimesIcon } from "../../@patternfly/react-icons";
 import { Children, useRef, useState } from "react";
 import {
   KeycloakSelectProps,

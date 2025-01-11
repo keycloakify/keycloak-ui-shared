@@ -7,7 +7,7 @@ import {
   Select,
   SelectList,
   SelectOptionProps,
-} from "@patternfly/react-core";
+} from "../../@patternfly/react-core";
 import { Children, useRef, useState } from "react";
 import { KeycloakSelectProps, propertyToString } from "./KeycloakSelect";
 

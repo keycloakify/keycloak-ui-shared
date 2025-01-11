@@ -54,6 +54,8 @@ import { isAmong } from "tsafe/isAmong";
 
     const cacheDirPath = pathJoin(getThisCodebaseRootDirPath(), "node_modules", ".cache", "scripts");
 
+    const PATTERNFLY_MODULES = ["react-core", "react-icons", "react-styles", "react-table"] as const;
+
     const { extractedDirPath } = await downloadAndExtractArchive({
         url: `https://github.com/keycloak/keycloak/archive/refs/tags/${keycloakVersion}.zip`,
         cacheDirPath,
@@ -109,7 +111,14 @@ import { isAmong } from "tsafe/isAmong";
                 return;
             }
 
-            const sourceCode = (await readFile()).toString("utf8");
+            let modifiedSourceCode = (await readFile()).toString("utf8");
+
+            for (const name of PATTERNFLY_MODULES) {
+                modifiedSourceCode = modifiedSourceCode.replaceAll(
+                    `"@patternfly/${name}"`,
+                    `"${new Array(fileRelativePath.split(pathSep).length).fill("..").join("/") || ".."}/@patternfly/${name}"`
+                );
+            }
 
             await writeFile({
                 fileRelativePath,
@@ -118,7 +127,7 @@ import { isAmong } from "tsafe/isAmong";
                         ...(fileRelativePath.endsWith(".ts") || fileRelativePath.endsWith(".tsx")
                             ? ["/* eslint-disable */", "", "// @ts-nocheck", ""]
                             : []),
-                        sourceCode
+                        modifiedSourceCode
                     ].join("\n"),
                     "utf8"
                 )
@@ -142,7 +151,6 @@ import { isAmong } from "tsafe/isAmong";
         transformSourceCode: ({ fileRelativePath, sourceCode }) => {
             if (fileRelativePath === "package.json") {
                 keycloakUiSharedVersion = JSON.parse(sourceCode.toString("utf8"))["version"];
-
                 return;
             }
 
@@ -164,6 +172,19 @@ import { isAmong } from "tsafe/isAmong";
             return { modifiedSourceCode: sourceCode };
         }
     });
+
+    for (const name of PATTERNFLY_MODULES) {
+        const dirPath = pathJoin(distDirPath, "keycloak-theme", "shared", "@patternfly", name);
+
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+        }
+
+        fs.writeFileSync(
+            pathJoin(dirPath, "index.tsx"),
+            Buffer.from(`export * from "@patternfly/react-core";`, "utf8")
+        );
+    }
 
     assert(typeof keycloakUiSharedVersion === "string");
     assert(isKeycloakSelectPatched);
