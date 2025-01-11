@@ -182,7 +182,13 @@ import { isAmong } from "tsafe/isAmong";
 
         fs.writeFileSync(
             pathJoin(dirPath, "index.tsx"),
-            Buffer.from(`export * from "@patternfly/react-core";`, "utf8")
+            Buffer.from(
+                [
+                    `// eslint-disable-next-line react-refresh/only-export-components`,
+                    `export * from "@patternfly/${name}";`
+                ].join("\n"),
+                "utf8"
+            )
         );
     }
 
