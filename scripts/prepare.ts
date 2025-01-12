@@ -120,6 +120,13 @@ import { isAmong } from "tsafe/isAmong";
                 );
             }
 
+            if (fileRelativePath === pathJoin("user-profile", "UserProfileFields.tsx")) {
+                modifiedSourceCode = modifiedSourceCode.replace(
+                    `import { ScrollForm } from "../main";`,
+                    `export { ScrollForm } from "../scroll-form/ScrollForm";`
+                );
+            }
+
             await writeFile({
                 fileRelativePath,
                 modifiedData: Buffer.from(

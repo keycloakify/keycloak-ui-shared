@@ -12,7 +12,7 @@ import { TFunction } from "i18next";
 import { ReactNode, useMemo, type JSX } from "react";
 import { FieldPath, UseFormReturn } from "react-hook-form";
 
-import { ScrollForm } from "../main";
+export { ScrollForm } from "../scroll-form/ScrollForm";
 import { LocaleSelector } from "./LocaleSelector";
 import { MultiInputComponent } from "./MultiInputComponent";
 import { OptionComponent } from "./OptionsComponent";
