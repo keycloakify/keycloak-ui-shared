@@ -58,6 +58,7 @@ type KeycloakMastheadProps = MastheadMainProps & {
   kebabDropdownItems?: ReactNode[];
   dropdownItems?: ReactNode[];
   toolbarItems?: ReactNode[];
+  toolbar?: ReactNode;
 };
 
 const KeycloakMasthead = ({
@@ -72,6 +73,7 @@ const KeycloakMasthead = ({
   kebabDropdownItems,
   dropdownItems = [],
   toolbarItems,
+  toolbar,
   ...rest
 }: KeycloakMastheadProps) => {
   const { t } = useTranslation();
@@ -106,6 +108,7 @@ const KeycloakMasthead = ({
         <img src={src} alt={alt} className={className} />
       </MastheadBrand>
       <MastheadContent>
+        {toolbar}
         <Toolbar>
           <ToolbarContent>
             {toolbarItems?.map((item, index) => (

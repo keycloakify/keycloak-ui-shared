@@ -12,6 +12,7 @@ import {
 } from "react-hook-form";
 import { SwitchProps, Switch } from "../../@patternfly/react-core";
 import { FormLabel } from "./FormLabel";
+import { debeerify } from "../user-profile/utils";
 
 export type SwitchControlProps<
   T extends FieldValues,
@@ -55,7 +56,7 @@ export const SwitchControl = <
           <Switch
             {...props}
             id={props.name}
-            data-testid={props.name}
+            data-testid={debeerify(props.name)}
             label={labelOn}
             isChecked={stringify ? value === "true" : value}
             onChange={(e, checked) => {

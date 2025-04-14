@@ -53,6 +53,10 @@ export type SelectControlProps<
     menuAppendTo?: string;
     placeholderText?: string;
     chipGroupProps?: ChipGroupProps;
+    onSelect?: (
+      value: string | string[],
+      onChangeHandler: (value: string | string[]) => void,
+    ) => void;
   };
 
 export const isSelectBasedOptions = (

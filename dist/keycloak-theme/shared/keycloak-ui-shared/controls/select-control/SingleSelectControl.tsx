@@ -36,6 +36,8 @@ export const SingleSelectControl = <
   options,
   controller,
   labelIcon,
+  isDisabled,
+  onSelect,
   ...rest
 }: SelectControlProps<T, P>) => {
   const {
@@ -60,6 +62,7 @@ export const SingleSelectControl = <
         render={({ field: { onChange, value } }) => (
           <Select
             {...rest}
+            variant="default"
             onClick={() => setOpen(!open)}
             onOpenChange={() => setOpen(false)}
             selected={
@@ -81,7 +84,8 @@ export const SingleSelectControl = <
                 isExpanded={open}
                 isFullWidth
                 status={get(errors, name) ? MenuToggleStatus.danger : undefined}
-                aria-label="toggle"
+                aria-label={label}
+                isDisabled={isDisabled}
               >
                 {isSelectBasedOptions(options)
                   ? options.find(
@@ -92,8 +96,13 @@ export const SingleSelectControl = <
               </MenuToggle>
             )}
             onSelect={(_event, v) => {
-              const option = v?.toString();
-              onChange(Array.isArray(value) ? [option] : option);
+              const option = v?.toString()!;
+              const convertedValue = Array.isArray(value) ? [option] : option;
+              if (onSelect) {
+                onSelect(convertedValue, onChange);
+              } else {
+                onChange(convertedValue);
+              }
               setOpen(false);
             }}
             isOpen={open}
