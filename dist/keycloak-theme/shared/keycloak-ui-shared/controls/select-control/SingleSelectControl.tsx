@@ -34,6 +34,7 @@ export const SingleSelectControl = <
   name,
   label,
   options,
+  selectedOptions = [],
   controller,
   labelIcon,
   isDisabled,
@@ -49,6 +50,7 @@ export const SingleSelectControl = <
 
   return (
     <FormLabel
+      id={id}
       name={name}
       label={label}
       isRequired={required}
@@ -78,7 +80,7 @@ export const SingleSelectControl = <
             }
             toggle={(ref) => (
               <MenuToggle
-                id={id || name.slice(name.lastIndexOf(".") + 1)}
+                id={id || name}
                 ref={ref}
                 onClick={() => setOpen(!open)}
                 isExpanded={open}
@@ -108,7 +110,7 @@ export const SingleSelectControl = <
             isOpen={open}
           >
             <SelectList data-testid={`select-${name}`}>
-              {options.map((option) => (
+              {[...options, ...selectedOptions].map((option) => (
                 <SelectOption key={key(option)} value={key(option)}>
                   {isString(option) ? option : option.value}
                 </SelectOption>
