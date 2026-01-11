@@ -35,6 +35,7 @@ export const TextComponent = (props: UserProfileFieldProps) => {
         }
         isDisabled={attribute.readOnly}
         isRequired={isRequired}
+        defaultValue={attribute.defaultValue}
         {...form.register(fieldName(attribute.name))}
       />
     </UserProfileGroup>
