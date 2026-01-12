@@ -1,6 +1,6 @@
 {
   "name": "@keycloakify/keycloak-ui-shared",
-  "version": "260500.0.0",
+  "version": "260500.1.0-rc.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/keycloakify/keycloak-ui-shared.git"
