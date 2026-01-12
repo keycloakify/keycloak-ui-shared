@@ -3,7 +3,7 @@
 // @ts-nocheck
 
 import { Spinner } from "../../@patternfly/react-core";
-import Keycloak from "keycloak-js";
+import { Keycloak } from "oidc-spa/keycloak-js";
 import {
   PropsWithChildren,
   createContext,
@@ -58,7 +58,7 @@ export const KeycloakProvider = <T extends BaseEnvironment>({
       clientId: environment.clientId,
     });
 
-    keycloak.onAuthLogout = () => keycloak.login();
+    
 
     return keycloak;
   }, [environment]);
@@ -73,7 +73,7 @@ export const KeycloakProvider = <T extends BaseEnvironment>({
       keycloak.init({
         onLoad: "login-required",
         pkceMethod: "S256",
-        responseMode: "query",
+        
         scope: environment.scope,
       });
 

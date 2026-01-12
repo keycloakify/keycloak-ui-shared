@@ -85,8 +85,16 @@ import { isAmong } from "tsafe/isAmong";
             }
 
             if (fileRelativePath === "package.json") {
+                const version = JSON.parse((await readFile()).toString("utf8"))["version"];
+
+                const pkgStr = await fetch(
+                    `https://unpkg.com/@keycloak/keycloak-ui-shared@${version}/package.json`,
+                    fetchOptions
+                ).then(response => response.text());
+
                 await writeFile({
-                    fileRelativePath: "package.json"
+                    fileRelativePath: "package.json",
+                    modifiedData: Buffer.from(pkgStr, "utf8")
                 });
 
                 return;
@@ -126,6 +134,42 @@ import { isAmong } from "tsafe/isAmong";
                     `import { ScrollForm } from "../scroll-form/ScrollForm";`
                 );
             }
+
+            if (fileRelativePath === pathJoin("context", "KeycloakContext.tsx")) {
+                let before = modifiedSourceCode;
+
+                modifiedSourceCode = modifiedSourceCode.replace(
+                    `import Keycloak from "keycloak-js";`,
+                    `import { Keycloak } from "oidc-spa/keycloak-js";`
+                );
+
+                assert(modifiedSourceCode !== before);
+
+                before = modifiedSourceCode;
+
+                modifiedSourceCode = modifiedSourceCode.replace(
+                    `keycloak.onAuthLogout = () => keycloak.login();`,
+                    ``
+                );
+
+                assert(modifiedSourceCode !== before);
+                before = modifiedSourceCode;
+
+                modifiedSourceCode = modifiedSourceCode.replace(`responseMode: "query",`, ``);
+
+                assert(modifiedSourceCode !== before);
+            }
+
+            if (fileRelativePath === pathJoin("masthead", "Masthead.tsx")) {
+                let before = modifiedSourceCode;
+                modifiedSourceCode = modifiedSourceCode.replace(
+                    `import Keycloak, { type KeycloakTokenParsed } from "keycloak-js";`,
+                    `import type { Keycloak, KeycloakTokenParsed } from "oidc-spa/keycloak-js";`
+                );
+                assert(modifiedSourceCode !== before);
+            }
+
+            assert(!modifiedSourceCode.includes(`"keycloak-js"`));
 
             await writeFile({
                 fileRelativePath,
@@ -203,10 +247,9 @@ import { isAmong } from "tsafe/isAmong";
     assert(isKeycloakSelectPatched);
 
     distPackageJson.peerDependencies = await (async () => {
-        const { dependencies, peerDependencies, devDependencies } = (await fetch(
-            `https://unpkg.com/@keycloak/keycloak-ui-shared@${keycloakUiSharedVersion}/package.json`,
-            fetchOptions
-        ).then(response => response.json())) as {
+        const { dependencies, peerDependencies, devDependencies } = JSON.parse(
+            fs.readFileSync(pathJoin(extractedDirPath, "package.json")).toString("utf8")
+        ) as {
             dependencies?: Record<string, string>;
             peerDependencies?: Record<string, string>;
             devDependencies?: Record<string, string>;
@@ -216,7 +259,7 @@ import { isAmong } from "tsafe/isAmong";
             Object.entries({
                 ...dependencies,
                 ...peerDependencies
-            }).filter(([moduleName]) => !isAmong(["react-dom"], moduleName))
+            }).filter(([moduleName]) => !isAmong(["react-dom", "keycloak-js"], moduleName))
         );
 
         const typeNames = Object.keys(dependenciesAndPeerDependencies).map(name =>
@@ -233,7 +276,8 @@ import { isAmong } from "tsafe/isAmong";
 
                     return typeNames.includes(name);
                 })
-            )
+            ),
+            "oidc-spa": "10.0.1-rc.6"
         };
     })();
 
