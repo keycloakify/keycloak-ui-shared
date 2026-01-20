@@ -277,7 +277,7 @@ import { isAmong } from "tsafe/isAmong";
                     return typeNames.includes(name);
                 })
             ),
-            "oidc-spa": "10.0.1-rc.6"
+            "oidc-spa": "^10.0.2"
         };
     })();
 

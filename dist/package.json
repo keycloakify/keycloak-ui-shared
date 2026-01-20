@@ -21,7 +21,7 @@
     "@keycloak/keycloak-admin-client": "26.5.0",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.18",
-    "oidc-spa": "10.0.1-rc.6"
+    "oidc-spa": "^10.0.2"
   },
   "publishConfig": {
     "access": "public"
