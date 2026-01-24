@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import { useEnvironment } from "./keycloak-ui-shared";
 
+let documentTitleStatus: { isOverridden: false } | { isOverridden: true; actualTitle: string } = {
+    isOverridden: false
+};
 
-let documentTitleStatus: { isOverridden: false; } | { isOverridden: true; actualTitle: string } = { isOverridden: false };
-
-export function SessionExpirationWarningOverlay(props: {
-    warnUserSecondsBeforeAutoLogout: number;
-}) {
+export function SessionExpirationWarningOverlay(props: { warnUserSecondsBeforeAutoLogout: number }) {
     const { warnUserSecondsBeforeAutoLogout } = props;
 
     const { keycloak } = useEnvironment();
@@ -23,8 +22,8 @@ export function SessionExpirationWarningOverlay(props: {
             throw new Error("assertion error");
         }
 
-        const { unsubscribeFromAutoLogoutCountdown } =
-            oidc.subscribeToAutoLogoutCountdown(({ secondsLeft }) => {
+        const { unsubscribeFromAutoLogoutCountdown } = oidc.subscribeToAutoLogoutCountdown(
+            ({ secondsLeft }) => {
                 if (secondsLeft === undefined) {
                     // The use had become active again. Hide the overlay
                     setSecondsLeft(undefined);
@@ -38,7 +37,8 @@ export function SessionExpirationWarningOverlay(props: {
                 }
 
                 setSecondsLeft(secondsLeft);
-            });
+            }
+        );
 
         return () => {
             unsubscribeFromAutoLogoutCountdown();
@@ -47,14 +47,14 @@ export function SessionExpirationWarningOverlay(props: {
 
     useEffect(() => {
         if (secondsLeft === undefined) {
-            if( documentTitleStatus.isOverridden ){
+            if (documentTitleStatus.isOverridden) {
                 document.title = documentTitleStatus.actualTitle;
             }
-            documentTitleStatus= { isOverridden: false };
+            documentTitleStatus = { isOverridden: false };
             return;
         }
 
-        if( !documentTitleStatus.isOverridden ){
+        if (!documentTitleStatus.isOverridden) {
             documentTitleStatus = {
                 isOverridden: true,
                 actualTitle: document.title
@@ -98,9 +98,7 @@ export function SessionExpirationWarningOverlay(props: {
                     lineHeight: 1.4
                 }}
             >
-                <p style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>
-                    Session expiring soon
-                </p>
+                <p style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>Session expiring soon</p>
                 <p style={{ margin: "12px 0 0" }}>
                     You will be signed out in <strong>{secondsLeft}</strong> seconds due to inactivity.
                 </p>
