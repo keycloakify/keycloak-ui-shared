@@ -224,6 +224,14 @@ import { isAmong } from "tsafe/isAmong";
         }
     });
 
+    assert(typeof keycloakUiSharedVersion === "string");
+    assert(isKeycloakSelectPatched);
+
+    transformCodebase({
+        srcDirPath: pathJoin(getThisCodebaseRootDirPath(), "keycloak-theme"),
+        destDirPath: pathJoin(distDirPath, "keycloak-theme")
+    });
+
     for (const name of PATTERNFLY_MODULES) {
         const dirPath = pathJoin(distDirPath, "keycloak-theme", "shared", "@patternfly", name);
 
@@ -242,9 +250,6 @@ import { isAmong } from "tsafe/isAmong";
             )
         );
     }
-
-    assert(typeof keycloakUiSharedVersion === "string");
-    assert(isKeycloakSelectPatched);
 
     distPackageJson.peerDependencies = await (async () => {
         const { dependencies, peerDependencies, devDependencies } = JSON.parse(
