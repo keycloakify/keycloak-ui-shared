@@ -1,6 +1,6 @@
 {
   "name": "@keycloakify/keycloak-ui-shared",
-  "version": "260502.0.0-rc.1",
+  "version": "260502.0.0-rc.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/keycloakify/keycloak-ui-shared.git"
@@ -21,7 +21,7 @@
     "@keycloak/keycloak-admin-client": "26.5.2",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.18",
-    "oidc-spa": "~10.0.4"
+    "oidc-spa": "~10.0.5"
   },
   "publishConfig": {
     "access": "public"
