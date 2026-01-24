@@ -43,7 +43,7 @@ export function SessionExpirationWarningOverlay(props: { warnUserSecondsBeforeAu
         return () => {
             unsubscribeFromAutoLogoutCountdown();
         };
-    }, []);
+    }, [warnUserSecondsBeforeAutoLogout]);
 
     useEffect(() => {
         if (secondsLeft === undefined) {
