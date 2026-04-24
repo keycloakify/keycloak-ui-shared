@@ -38,6 +38,7 @@ export const SingleSelectControl = <
   controller,
   labelIcon,
   isDisabled,
+  isFullWidth = true,
   onSelect,
   ...rest
 }: SelectControlProps<T, P>) => {
@@ -84,7 +85,7 @@ export const SingleSelectControl = <
                 ref={ref}
                 onClick={() => setOpen(!open)}
                 isExpanded={open}
-                isFullWidth
+                isFullWidth={isFullWidth}
                 status={get(errors, name) ? MenuToggleStatus.danger : undefined}
                 aria-label={label}
                 isDisabled={isDisabled}
@@ -111,7 +112,15 @@ export const SingleSelectControl = <
           >
             <SelectList data-testid={`select-${name}`}>
               {[...options, ...selectedOptions].map((option) => (
-                <SelectOption key={key(option)} value={key(option)}>
+                <SelectOption
+                  key={key(option)}
+                  value={key(option)}
+                  description={
+                    !isString(option) && "description" in option
+                      ? option.description
+                      : undefined
+                  }
+                >
                   {isString(option) ? option : option.value}
                 </SelectOption>
               ))}

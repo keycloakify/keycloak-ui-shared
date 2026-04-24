@@ -23,6 +23,7 @@ export enum SelectVariant {
 export type SelectControlOption = {
   key: string;
   value: string;
+  description?: string;
 };
 
 export type OptionType = string[] | SelectControlOption[];
@@ -51,6 +52,7 @@ export type SelectControlProps<
     onFilter?: (value: string) => void;
     variant?: Variant;
     isDisabled?: boolean;
+    isFullWidth?: boolean;
     menuAppendTo?: string;
     placeholderText?: string;
     chipGroupProps?: ChipGroupProps;
