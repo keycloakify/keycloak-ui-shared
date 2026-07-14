@@ -277,7 +277,7 @@ export const TypeaheadSelectControl = <
                         onClick={() => {
                           setFilterValue("");
                           field.onChange(isTypeaheadMulti ? [] : "");
-                          textInputRef?.current?.focus();
+                          textInputRef.current?.focus();
                         }}
                         aria-label="Clear input value"
                       >
